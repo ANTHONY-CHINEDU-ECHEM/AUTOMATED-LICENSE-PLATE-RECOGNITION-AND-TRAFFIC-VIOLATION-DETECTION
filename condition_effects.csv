@@ -1,0 +1,16 @@
+factor,measure,h_statistic,p_value,epsilon_squared,significant_at_5pct
+lighting_condition,ocr_confidence_score,0.7130,0.8701,0.0001,False
+lighting_condition,image_quality_score,1.6990,0.6372,0.0001,False
+lighting_condition,detection_confidence,0.7880,0.8522,0.0001,False
+weather_at_capture,ocr_confidence_score,9.6880,0.0846,0.0006,False
+weather_at_capture,image_quality_score,3.3310,0.6491,0.0002,False
+weather_at_capture,detection_confidence,2.7220,0.7428,0.0002,False
+vehicle_type,ocr_confidence_score,3.8050,0.5778,0.0003,False
+vehicle_type,image_quality_score,7.6270,0.1780,0.0005,False
+vehicle_type,detection_confidence,5.6360,0.3433,0.0004,False
+road_type,ocr_confidence_score,0.5110,0.9724,0.0000,False
+road_type,image_quality_score,0.3200,0.9885,0.0000,False
+road_type,detection_confidence,1.0550,0.9014,0.0001,False
+model_name,ocr_confidence_score,3.2910,0.3489,0.0002,False
+model_name,image_quality_score,3.0900,0.3779,0.0002,False
+model_name,detection_confidence,1.7710,0.6213,0.0001,False

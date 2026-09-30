@@ -1,0 +1,13 @@
+issue,records,share_pct
+Segment and posted speed limits disagree,13001,85.2500
+Recorded weekday contradicts date,12938,84.8400
+Violation flag contradicts violation type,6056,39.7100
+Citation amount with no citation,3664,24.0300
+Citation issued on a No Violation capture,2137,14.0100
+Citation with no amount,2048,13.4300
+Reviewer assigned without review flag,2004,13.1400
+Appeal outcome with no appeal filed,1467,9.6200
+Recorded speeding contradicted by measured speed,1405,9.2100
+Appeal filed with no citation,618,4.0500
+Toll evasion with no toll gantry,375,2.4600
+Record identifier collision repaired,92,0.6000

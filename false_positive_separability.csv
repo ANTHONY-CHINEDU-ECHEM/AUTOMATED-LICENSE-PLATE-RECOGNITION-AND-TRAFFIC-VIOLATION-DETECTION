@@ -1,0 +1,5 @@
+signal,records,false_positives,roc_auc,mean_when_false_positive,mean_when_true_detection
+detection_confidence,14945,567,0.5001,0.6502,0.6503
+ocr_confidence_score,14945,570,0.5037,0.6483,0.6508
+image_quality_score,14792,556,0.5001,49.9025,49.9034
+evidence_strength,15250,580,0.5026,0.5837,0.5865

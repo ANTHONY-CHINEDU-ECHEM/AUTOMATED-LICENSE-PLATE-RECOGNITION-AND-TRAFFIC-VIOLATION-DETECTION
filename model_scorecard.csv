@@ -1,0 +1,5 @@
+model_name,captures,mean_detection_conf,mean_ocr_conf,mean_image_quality,detection_gate_pass_pct,ocr_gate_pass_pct,all_gates_pass_pct,manual_review_pct,false_positive_pct,fp_ci_low_pct,fp_ci_high_pct
+EasyOCR,3832,0.6524,0.6528,50.4179,42.9500,28.3700,6.8400,12.0600,3.1600,2.6500,3.7600
+Faster RCNN,3801,0.6525,0.6528,49.3688,42.4100,28.4400,7.0800,12.4200,3.6800,3.1300,4.3300
+YOLOv5,3820,0.6491,0.6456,50.1792,41.7300,27.6400,6.6000,12.9600,4.1600,3.5700,4.8400
+YOLOv8,3797,0.6473,0.6517,49.6430,41.0600,29.1500,6.9000,12.2700,4.2100,3.6200,4.9000

@@ -1,0 +1,7 @@
+factor,h_statistic,p_value,epsilon_squared,significant_at_5pct
+model_name,2.8590,0.4138,0.0002,False
+lighting_condition,4.2150,0.2391,0.0003,False
+weather_at_capture,4.5540,0.4727,0.0003,False
+vehicle_type,9.8740,0.0789,0.0007,False
+road_type,6.0010,0.1991,0.0004,False
+time_of_day,2.1880,0.9487,0.0001,False

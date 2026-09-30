@@ -1,0 +1,96 @@
+stage,column,issue,rows_affected,action
+Load,all,Raw export loaded,15394,Every column read as text
+Structure,all,Fully empty rows,22,Removed
+Structure,all,Exact duplicate rows,122,"Removed, first kept"
+Identifiers,record_id,Inconsistent prefix separator and zero padding,15250,Standardised to TRF_ plus 7 digits
+Identifiers,intersection_id,Inconsistent prefix separator and zero padding,15250,Standardised to INT_ plus 7 digits
+Identifiers,sensor_camera_id,Inconsistent prefix separator and zero padding,15250,Standardised to CAM_ plus 7 digits
+Identifiers,camera_id,Inconsistent prefix separator and zero padding,15250,Standardised to CAM_ plus 7 digits
+Identifiers,capture_id,Inconsistent prefix separator and zero padding,15250,Standardised to ALP_ plus 7 digits
+Identifiers,plate_number_raw,Inconsistent prefix separator and zero padding,15250,Standardised to PLT_ plus 7 digits
+Identifiers,reviewer_id,Inconsistent prefix separator and zero padding,2288,Standardised to REV_ plus 7 digits
+Identifiers,toll_gantry_id,Inconsistent prefix separator and zero padding,3050,Standardised to TG_ plus 7 digits
+Identifiers,capture_id,"Capture key linkage to intersection, camera and plate",0,Verified; capture_id adopted as primary key
+Identifiers,record_id,Record identifier collides with another capture and breaks the key linkage,92,Rebuilt from capture number and flagged
+Categorical text,corridor_name,"Casing, whitespace, underscore and punctuation variants",610,Mapped to canonical vocabulary
+Categorical text,day_of_week,"Casing, whitespace, underscore and punctuation variants",391,Mapped to canonical vocabulary
+Categorical text,district_zone,"Casing, whitespace, underscore and punctuation variants",15250,Mapped to canonical vocabulary
+Categorical text,jurisdiction,"Casing, whitespace, underscore and punctuation variants",458,Mapped to canonical vocabulary
+Categorical text,road_type,"Casing, whitespace, underscore and punctuation variants",414,Mapped to canonical vocabulary
+Categorical text,weather_condition,"Casing, whitespace, underscore and punctuation variants",389,Mapped to canonical vocabulary
+Categorical text,weather_at_capture,"Casing, whitespace, underscore and punctuation variants",0,Mapped to canonical vocabulary
+Categorical text,vehicle_color,"Casing, whitespace, underscore and punctuation variants",394,Mapped to canonical vocabulary
+Categorical text,vehicle_type,"Casing, whitespace, underscore and punctuation variants",364,Mapped to canonical vocabulary
+Categorical text,vehicle_make,"Casing, whitespace, underscore and punctuation variants",0,Mapped to canonical vocabulary
+Categorical text,model_name,"Casing, whitespace, underscore and punctuation variants",4002,Mapped to canonical vocabulary
+Categorical text,lighting_condition,"Casing, whitespace, underscore and punctuation variants",391,Mapped to canonical vocabulary
+Categorical text,violation_type,"Casing, whitespace, underscore and punctuation variants",0,Mapped to canonical vocabulary
+Categorical text,appeal_outcome,"Casing, whitespace, underscore and punctuation variants",0,Mapped to canonical vocabulary
+Categorical text,time_of_day,Padded and punctuated time bands,102,Parsed to canonical band label and start hour
+Booleans,violation_flag,8 distinct truth tokens,15250,Mapped to a single boolean type
+Booleans,citation_issued_flag,8 distinct truth tokens,15250,Mapped to a single boolean type
+Booleans,plate_match_database_flag,8 distinct truth tokens,15250,Mapped to a single boolean type
+Booleans,stolen_vehicle_alert_flag,8 distinct truth tokens,15250,Mapped to a single boolean type
+Booleans,amber_alert_match_flag,7 distinct truth tokens,15250,Mapped to a single boolean type
+Booleans,false_positive_flag,8 distinct truth tokens,15250,Mapped to a single boolean type
+Booleans,manual_review_flag,8 distinct truth tokens,15250,Mapped to a single boolean type
+Booleans,appeal_filed_flag,8 distinct truth tokens,15250,Mapped to a single boolean type
+Dates,observation_date,Layout detected: Year first,6082,Parsed
+Dates,observation_date,Layout detected: Day with month name,2913,Parsed
+Dates,observation_date,Layout detected: Slash ambiguous,2354,Parsed
+Dates,observation_date,Layout detected: Slash month first,1826,Parsed
+Dates,observation_date,Layout detected: Slash day first,1794,Parsed
+Dates,observation_date,Layout detected: Slash ambiguous resolved by window,98,Parsed
+Dates,observation_date,Slash dates with both parts twelve or lower,2452,"Resolved against the observed date window, otherwise month first; flagged"
+Dates,observation_date,Unparseable date text,0,Set to null
+Dates,observation_date,Missing date,183,Left null; excluded from time trend analysis only
+Dates,capture_timestamp,Layout detected: Year first,6098,Parsed
+Dates,capture_timestamp,Layout detected: Day with month name,3004,Parsed
+Dates,capture_timestamp,Layout detected: Slash ambiguous,2459,Parsed
+Dates,capture_timestamp,Layout detected: Slash month first,1803,Parsed
+Dates,capture_timestamp,Layout detected: Slash day first,1734,Parsed
+Dates,capture_timestamp,Slash dates with both parts twelve or lower,2459,"Resolved against the observed date window, otherwise month first; flagged"
+Dates,capture_timestamp,Unparseable date text,0,Set to null
+Dates,capture_timestamp,Missing date,152,Left null; excluded from time trend analysis only
+Dates,day_of_week,Recorded weekday contradicts the observation date,12938,Replaced by weekday derived from date; original retained
+Outliers,speed_detected_mph,Outside plausible range 0 to 120,146,Nulled (sensor fault) and flagged
+Outliers,avg_speed_mph,Outside plausible range 0 to 100,116,Nulled (sensor fault) and flagged
+Outliers,avg_speed_mph,Robust z score above 6 within plausible range,30,Nulled and flagged
+Outliers,vehicle_count,Outside plausible range 0 to 1500,148,Nulled (sensor fault) and flagged
+Outliers,processing_latency_ms,Outside plausible range 0 to 1000,0,Nulled (sensor fault) and flagged
+Outliers,image_quality_score,Outside plausible range 0 to 100,0,Nulled (sensor fault) and flagged
+Outliers,ocr_confidence_score,Outside plausible range 0 to 1,0,Nulled (sensor fault) and flagged
+Outliers,detection_confidence,Outside plausible range 0 to 1,0,Nulled (sensor fault) and flagged
+Outliers,citation_amount_usd,Outside plausible range 0 to 1000,0,Nulled (sensor fault) and flagged
+Consistency,posted_speed_limit_mph,Segment limit disagrees with the limit posted at the capture point,13001,Capture point limit adopted as the legal reference
+Consistency,violation_flag,Violation flag contradicts violation type,6056,Flagged; rules layer rederives the decision
+Consistency,citation_issued_flag,Citation recorded against a No Violation capture,2137,Flagged for audit
+Consistency,citation_amount_usd,Amount recorded where no citation was issued,3664,Removed from citation amount; original retained
+Consistency,citation_amount_usd,Citation issued with no amount,2048,Flagged; not imputed
+Consistency,appeal_outcome,Appeal outcome recorded with no appeal filed,1467,Reset to Not Applicable; original retained
+Consistency,appeal_outcome,Appeal filed with no outcome,704,Set to Not Recorded
+Consistency,appeal_filed_flag,Appeal filed against an uncited capture,618,Flagged for audit
+Consistency,reviewer_id,Reviewer assigned but record not flagged for review,2004,Flagged
+Consistency,toll_gantry_id,Toll evasion recorded where no toll gantry exists,375,Flagged; cannot be enforced as recorded
+Consistency,weather_at_capture,Segment weather differs from capture weather,9676,Capture weather used for image analysis
+Consistency,capture_timestamp,Capture date more than 30 days from observation date,14262,Flagged; observation date used for trend analysis
+Missing values,corridor_name,Missing descriptive value,0,Explicit Unknown level
+Missing values,district_zone,Missing descriptive value,0,Explicit Unknown level
+Missing values,jurisdiction,Missing descriptive value,0,Explicit Unknown level
+Missing values,road_type,Missing descriptive value,0,Explicit Unknown level
+Missing values,weather_condition,Missing descriptive value,0,Explicit Unknown level
+Missing values,weather_at_capture,Missing descriptive value,0,Explicit Unknown level
+Missing values,vehicle_color,Missing descriptive value,0,Explicit Unknown level
+Missing values,vehicle_type,Missing descriptive value,0,Explicit Unknown level
+Missing values,vehicle_make,Missing descriptive value,305,Explicit Unknown level
+Missing values,model_name,Missing descriptive value,0,Explicit Unknown level
+Missing values,lighting_condition,Missing descriptive value,0,Explicit Unknown level
+Missing values,time_of_day,Missing descriptive value,0,Explicit Unknown level
+Missing values,plate_state,Missing descriptive value,305,Explicit Unknown level
+Missing values,violation_type,Missing violation type,0,Explicit Unrecorded level; routed to review
+Missing values,ocr_confidence_score,Missing or invalid evidential measurement,305,Left null; never imputed
+Missing values,detection_confidence,Missing or invalid evidential measurement,305,Left null; never imputed
+Missing values,image_quality_score,Missing or invalid evidential measurement,458,Left null; never imputed
+Missing values,speed_detected_mph,Missing or invalid evidential measurement,604,Left null; never imputed
+Missing values,processing_latency_ms,Missing or invalid evidential measurement,458,Left null; never imputed
+Output,all,Analysis ready records,15250,Written to data/processed

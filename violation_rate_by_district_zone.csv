@@ -1,0 +1,6 @@
+district_zone,records,events,rate_pct,ci_low_pct,ci_high_pct
+Zone 1 Downtown,3067,1264,41.2100,39.4800,42.9600
+Zone 2 North,3164,1195,37.7700,36.1000,39.4700
+Zone 3 South,3036,1190,39.2000,37.4700,40.9500
+Zone 4 East Industrial,3032,1183,39.0200,37.3000,40.7700
+Zone 5 West Residential,2951,1131,38.3300,36.5900,40.0900

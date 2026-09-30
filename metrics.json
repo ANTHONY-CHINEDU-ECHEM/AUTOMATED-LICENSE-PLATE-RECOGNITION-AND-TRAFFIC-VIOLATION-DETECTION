@@ -1,0 +1,135 @@
+{
+  "overall_benchmark": {
+    "captures": 15250,
+    "latency_p50_ms": 119.8,
+    "latency_p95_ms": 219.0,
+    "latency_p95_ci_ms": [
+      216.9,
+      220.5
+    ],
+    "latency_p99_ms": 260.2,
+    "latency_sla_ms": 200.0,
+    "latency_sla_compliance_pct": 90.85,
+    "false_positive_rate_pct": 3.8,
+    "evidence_gate_pass_pct": 6.85,
+    "rules_label_agreement_pct": 63.11,
+    "throughput_fps_per_stream": 8.29
+  },
+  "workload_and_value": {
+    "auto_issue_cases": 332,
+    "auto_issue_value_usd": 72075.0,
+    "manual_review_cases": 5391,
+    "manual_review_value_usd": 1204200.0,
+    "manual_review_hours": 269.6,
+    "manual_review_shifts": 35.9,
+    "review_hours_per_10k_captures": 176.8,
+    "supported_not_recorded_cases": 3407,
+    "supported_not_recorded_value_usd": 795400.0,
+    "recorded_but_unsupported_cases": 1776,
+    "priority_alerts": 36
+  },
+  "limit_source_sensitivity": {
+    "captures_with_both_limits": 14496,
+    "limit_fields_disagree_pct": 85.25,
+    "speeding_decision_agreement_pct": 71.67,
+    "speeding_under_posted_limit": 4733,
+    "speeding_under_segment_limit": 4813,
+    "recorded_speeding_supported_by_posted_limit_pct": 32.81,
+    "recorded_speeding_supported_by_segment_limit_pct": 32.98,
+    "no_violation_records_measured_speeding_pct": 32.51
+  },
+  "citations_and_appeals": {
+    "citations_recorded": 2959,
+    "citations_with_supported_violation": 1173,
+    "citations_without_supported_violation": 1786,
+    "appeals_filed_on_citations": 161,
+    "appeal_rate_pct": 5.44,
+    "appeals_decided": 13,
+    "appeals_overturned": 4,
+    "overturn_rate_pct": 30.77,
+    "overturn_by_evidence_gate": [
+      {
+        "evidence_gates_passed": false,
+        "overturned": 4,
+        "decided_appeals": 13
+      }
+    ]
+  },
+  "perception_tests": {
+    "false_positive_rate_by_model": {
+      "chi2": 7.611,
+      "p_value": 0.054767,
+      "dof": 3,
+      "cramers_v": 0.0223
+    },
+    "false_positive_rate_by_lighting": {
+      "chi2": 1.872,
+      "p_value": 0.599406,
+      "dof": 3,
+      "cramers_v": 0.0111
+    },
+    "ocr_confidence_by_lighting": {
+      "h_statistic": 0.713,
+      "p_value": 0.870058,
+      "epsilon_squared": "below 0.0001"
+    },
+    "ocr_confidence_by_weather": {
+      "h_statistic": 9.688,
+      "p_value": 0.084567,
+      "epsilon_squared": 0.00065
+    }
+  },
+  "segment_tests": {
+    "district_zone": {
+      "chi2": 8.868,
+      "p_value": 0.064478,
+      "dof": 4,
+      "cramers_v": 0.0241
+    },
+    "road_type": {
+      "chi2": 0.15,
+      "p_value": 0.997309,
+      "dof": 4,
+      "cramers_v": 0.0031
+    },
+    "time_of_day": {
+      "chi2": 5.057,
+      "p_value": 0.653058,
+      "dof": 7,
+      "cramers_v": 0.0182
+    },
+    "jurisdiction": {
+      "chi2": 0.092,
+      "p_value": 0.99282,
+      "dof": 3,
+      "cramers_v": 0.0025
+    },
+    "vehicle_type": {
+      "chi2": 10.065,
+      "p_value": 0.073427,
+      "dof": 5,
+      "cramers_v": 0.0257
+    },
+    "day_of_week": {
+      "chi2": 8.041,
+      "p_value": 0.235099,
+      "dof": 6,
+      "cramers_v": 0.023
+    }
+  },
+  "false_positive_model": {
+    "records": 15250,
+    "false_positive_prevalence_pct": 3.8,
+    "best_model": "Logistic regression",
+    "best_roc_auc": 0.4958,
+    "permutation_p_value": 0.5806,
+    "permutations": 30,
+    "deployable": false,
+    "deployment_bar_auc": 0.7
+  },
+  "records": {
+    "raw_rows": 15394,
+    "processed_captures": 15250,
+    "captures_with_integrity_flags": 15210
+  }
+}

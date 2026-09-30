@@ -1,0 +1,4 @@
+model,roc_auc_mean,roc_auc_std,average_precision_mean
+Prior baseline,0.5000,0.0000,0.0380
+Logistic regression,0.4958,0.0173,0.0373
+Gradient boosting,0.4634,0.0243,0.0350

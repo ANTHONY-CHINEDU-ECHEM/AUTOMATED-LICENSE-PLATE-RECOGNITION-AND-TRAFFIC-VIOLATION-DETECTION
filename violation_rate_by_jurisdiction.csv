@@ -1,0 +1,5 @@
+jurisdiction,records,events,rate_pct,ci_low_pct,ci_high_pct
+City DOT,3841,1497,38.9700,37.4400,40.5300
+County DOT,3785,1487,39.2900,37.7400,40.8500
+State DOT,3739,1459,39.0200,37.4700,40.6000
+Transit Authority,3885,1520,39.1200,37.6000,40.6700
