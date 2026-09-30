@@ -1,4 +1,4 @@
-# Automated License Plate Recognition and Traffic Violation Detection
+# AUTOMATED LICENSE PLATE RECOGNITION AND TRAFFIC VIOLATION DETECTION MODEL
 
 An industrial analytics pipeline that turns a raw roadside camera export into auditable enforcement decisions. It processes and repairs the capture log, runs a deterministic violation rules layer over the evidence, applies privacy controls before anything is exported, benchmarks the perception models on speed and accuracy, and delivers a prioritised review workbook for enforcement staff.
 
