@@ -75,7 +75,9 @@ The data dictionary warned of missing values, mixed date formats, inconsistent c
 
 The output is 15,250 unique captures keyed on capture identifier, each carrying its repairs as flags. Three rules governed every decision: evidential measurements are never imputed, because an imputed speed cannot support a citation; descriptive gaps are made explicit rather than guessed; and no repair is invisible.
 
-![Data integrity issues](outputs/figures/01_data_integrity_issues.png)
+<img width="1332" height="809" alt="01_data_integrity_issues" src="https://github.com/user-attachments/assets/04bcd19a-616c-4214-ab91-60c6508e6f40" />
+
+
 
 ## Core Analytics
 
@@ -96,9 +98,11 @@ Every capture receives one of five decisions with machine readable reasons. Hotl
 
 Among review cases, low OCR confidence is the most common blocking reason (76.6% of cases), followed by low detection confidence (60.8%) and low image quality (43.9%).
 
-![Decision mix](outputs/figures/02_decision_mix.png)
+<img width="1185" height="659" alt="02_decision_mix" src="https://github.com/user-attachments/assets/cfd81cfa-e358-4d38-81ff-9cca120fed43" />
 
-![Label reconciliation](outputs/figures/03_label_reconciliation.png)
+
+<img width="1258" height="658" alt="03_label_reconciliation" src="https://github.com/user-attachments/assets/e484d965-a6ac-46b4-b3bd-6fe4b10cb75b" />
+
 
 ### Perception stage and threshold tuning
 
@@ -114,11 +118,14 @@ Among review cases, low OCR confidence is the most common blocking reason (76.6%
 
 False positive rates differ by model only at the margin of significance (chi square p value 0.055, Cramer V 0.022). The threshold sweep shows the automation and workload trade off: at a detection threshold of 0.70, lowering the OCR gate from 0.80 to 0.60 lifts automation from 5.7% to 11.1% of candidates while the false positive share of accepted cases stays between 2% and 3.5%, close to the 3.8% base rate, confirming that the confidence scores are not buying precision.
 
-![Threshold trade off](outputs/figures/08_threshold_tradeoff.png)
+<img width="1259" height="658" alt="08_threshold_tradeoff" src="https://github.com/user-attachments/assets/f3f7ab1e-1853-445c-ba22-462df62af31a" />
 
-![False positive separability](outputs/figures/10_false_positive_separability.png)
 
-![OCR conditions](outputs/figures/07_ocr_conditions.png)
+<img width="1184" height="584" alt="10_false_positive_separability" src="https://github.com/user-attachments/assets/4b45da43-8e52-45cf-85cf-f65de80fda03" />
+
+
+<img width="1136" height="584" alt="07_ocr_conditions" src="https://github.com/user-attachments/assets/8c1d9c8b-dda7-4d67-87c5-54bce408466c" />
+
 
 ### Benchmark
 
@@ -134,15 +141,19 @@ False positive rates differ by model only at the margin of significance (chi squ
 
 The composite ranking is reported for completeness, but the bootstrap intervals on p95 latency overlap for every model and none of the latency drivers tested is significant. On this evidence no model should be retired on performance grounds; the decision should be made on licensing, hardware and maintainability once confidence outputs are calibrated.
 
-![Latency by model](outputs/figures/06_latency_by_model.png)
+<img width="1184" height="659" alt="06_latency_by_model" src="https://github.com/user-attachments/assets/1ddc7da2-182d-4757-967b-f39d64142a2a" />
+
 
 ### Corridors and hotspots
 
-![Speeding hotspots](outputs/figures/05_speeding_hotspots.png)
+<img width="1554" height="810" alt="05_speeding_hotspots" src="https://github.com/user-attachments/assets/f9a4a92b-eaa3-4318-8400-ef0ff2a2a7ef" />
 
-![Corridor fine value](outputs/figures/04_corridor_fine_value.png)
 
-![Monthly trend](outputs/figures/09_monthly_trend.png)
+<img width="1334" height="734" alt="04_corridor_fine_value" src="https://github.com/user-attachments/assets/2bfcfcbe-7cea-406e-84a1-27f445e42c8b" />
+
+
+<img width="1485" height="659" alt="09_monthly_trend" src="https://github.com/user-attachments/assets/0a50c57f-bd05-4f0f-a1bf-539ef3efb865" />
+
 
 ### Privacy and retention
 
