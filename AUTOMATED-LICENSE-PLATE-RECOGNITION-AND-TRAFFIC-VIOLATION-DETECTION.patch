@@ -1,0 +1,567 @@
+diff --git a/.github/workflows/ci.yml b/.github/workflows/ci.yml
+new file mode 100644
+index 0000000..13257b1
+--- /dev/null
++++ b/.github/workflows/ci.yml
+@@ -0,0 +1,22 @@
++name: CI
++
++on:
++  push:
++    branches: [main]
++  pull_request:
++
++jobs:
++  test:
++    runs-on: ubuntu-latest
++    steps:
++      - uses: actions/checkout@v4
++      - uses: actions/setup-python@v5
++        with:
++          python-version: "3.12"
++          cache: pip
++      - name: Install
++        run: |
++          python -m pip install --upgrade pip
++          pip install -r requirements.txt
++      - name: Test
++        run: pytest
+diff --git a/.gitignore b/.gitignore
+index 83972fa..861a740 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1,218 +1,17 @@
+-# Byte-compiled / optimized / DLL files
++# Python
+ __pycache__/
+-*.py[codz]
+-*$py.class
+-
+-# C extensions
+-*.so
+-
+-# Distribution / packaging
+-.Python
+-build/
+-develop-eggs/
+-dist/
+-downloads/
+-eggs/
+-.eggs/
+-lib/
+-lib64/
+-parts/
+-sdist/
+-var/
+-wheels/
+-share/python-wheels/
+-*.egg-info/
+-.installed.cfg
+-*.egg
+-MANIFEST
+-
+-# PyInstaller
+-#   Usually these files are written by a python script from a template
+-#   before PyInstaller builds the exe, so as to inject date/other infos into it.
+-*.manifest
+-*.spec
+-
+-# Installer logs
+-pip-log.txt
+-pip-delete-this-directory.txt
+-
+-# Unit test / coverage reports
+-htmlcov/
+-.tox/
+-.nox/
+-.coverage
+-.coverage.*
+-.cache
+-nosetests.xml
+-coverage.xml
+-*.cover
+-*.py.cover
+-.hypothesis/
++*.py[cod]
+ .pytest_cache/
+-cover/
+-
+-# Translations
+-*.mo
+-*.pot
+-
+-# Django stuff:
+-*.log
+-local_settings.py
+-db.sqlite3
+-db.sqlite3-journal
+-
+-# Flask stuff:
+-instance/
+-.webassets-cache
+-
+-# Scrapy stuff:
+-.scrapy
+-
+-# Sphinx documentation
+-docs/_build/
+-
+-# PyBuilder
+-.pybuilder/
+-target/
+-
+-# Jupyter Notebook
+-.ipynb_checkpoints
+-
+-# IPython
+-profile_default/
+-ipython_config.py
+-
+-# pyenv
+-#   For a library or package, you might want to ignore these files since the code is
+-#   intended to run in multiple environments; otherwise, check them in:
+-# .python-version
+-
+-# pipenv
+-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
+-#   install all needed dependencies.
+-# Pipfile.lock
+-
+-# UV
+-#   Similar to Pipfile.lock, it is generally recommended to include uv.lock in version control.
+-#   This is especially recommended for binary packages to ensure reproducibility, and is more
+-#   commonly ignored for libraries.
+-# uv.lock
+-
+-# poetry
+-#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
+-#   This is especially recommended for binary packages to ensure reproducibility, and is more
+-#   commonly ignored for libraries.
+-#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
+-# poetry.lock
+-# poetry.toml
+-
+-# pdm
+-#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
+-#   pdm recommends including project-wide configuration in pdm.toml, but excluding .pdm-python.
+-#   https://pdm-project.org/en/latest/usage/project/#working-with-version-control
+-# pdm.lock
+-# pdm.toml
+-.pdm-python
+-.pdm-build/
+-
+-# pixi
+-#   Similar to Pipfile.lock, it is generally recommended to include pixi.lock in version control.
+-# pixi.lock
+-#   Pixi creates a virtual environment in the .pixi directory, just like venv module creates one
+-#   in the .venv directory. It is recommended not to include this directory in version control.
+-.pixi
+-
+-# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
+-__pypackages__/
+-
+-# Celery stuff
+-celerybeat-schedule
+-celerybeat.pid
+-
+-# Redis
+-*.rdb
+-*.aof
+-*.pid
+-
+-# RabbitMQ
+-mnesia/
+-rabbitmq/
+-rabbitmq-data/
+-
+-# ActiveMQ
+-activemq-data/
+-
+-# SageMath parsed files
+-*.sage.py
+ 
+ # Environments
+-.env
+-.envrc
+-.venv
+-env/
++.venv/
+ venv/
+-ENV/
+-env.bak/
+-venv.bak/
+-
+-# Spyder project settings
+-.spyderproject
+-.spyproject
+-
+-# Rope project settings
+-.ropeproject
+-
+-# mkdocs documentation
+-/site
+-
+-# mypy
+-.mypy_cache/
+-.dmypy.json
+-dmypy.json
+-
+-# Pyre type checker
+-.pyre/
+-
+-# pytype static type analyzer
+-.pytype/
+-
+-# Cython debug symbols
+-cython_debug/
+-
+-# PyCharm
+-#   JetBrains specific template is maintained in a separate JetBrains.gitignore that can
+-#   be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
+-#   and can be added to the global gitignore or merged into this file.  For a more nuclear
+-#   option (not recommended) you can uncomment the following to ignore the entire idea folder.
+-# .idea/
+-
+-# Abstra
+-#   Abstra is an AI-powered process automation framework.
+-#   Ignore directories containing user credentials, local state, and settings.
+-#   Learn more at https://abstra.io/docs
+-.abstra/
+-
+-# Visual Studio Code
+-#   Visual Studio Code specific template is maintained in a separate VisualStudioCode.gitignore 
+-#   that can be found at https://github.com/github/gitignore/blob/main/Global/VisualStudioCode.gitignore
+-#   and can be added to the global gitignore or merged into this file. However, if you prefer, 
+-#   you could uncomment the following to ignore the entire vscode folder
+-# .vscode/
+-# Temporary file for partial code execution
+-tempCodeRunnerFile.py
+-
+-# Ruff stuff:
+-.ruff_cache/
+-
+-# PyPI configuration file
+-.pypirc
++.env
+ 
+-# Marimo
+-marimo/_static/
+-marimo/_lsp/
+-__marimo__/
++# Packaging
++build/
++dist/
++*.egg*
+ 
+-# Streamlit
+-.streamlit/secrets.toml
++# Operating system
++.DS_Store
+diff --git a/README.md b/README.md
+index 4c633fc..cf6279d 100644
+--- a/README.md
++++ b/README.md
+@@ -75,7 +75,7 @@ The data dictionary warned of missing values, mixed date formats, inconsistent c
+ 
+ The output is 15,250 unique captures keyed on capture identifier, each carrying its repairs as flags. Three rules governed every decision: evidential measurements are never imputed, because an imputed speed cannot support a citation; descriptive gaps are made explicit rather than guessed; and no repair is invisible.
+ 
+-<img width="1332" height="809" alt="01_data_integrity_issues" src="https://github.com/user-attachments/assets/04bcd19a-616c-4214-ab91-60c6508e6f40" />
++![Data integrity issues](outputs/figures/01_data_integrity_issues.png)
+ 
+ 
+ 
+@@ -98,10 +98,10 @@ Every capture receives one of five decisions with machine readable reasons. Hotl
+ 
+ Among review cases, low OCR confidence is the most common blocking reason (76.6% of cases), followed by low detection confidence (60.8%) and low image quality (43.9%).
+ 
+-<img width="1185" height="659" alt="02_decision_mix" src="https://github.com/user-attachments/assets/cfd81cfa-e358-4d38-81ff-9cca120fed43" />
++![Decision mix](outputs/figures/02_decision_mix.png)
+ 
+ 
+-<img width="1258" height="658" alt="03_label_reconciliation" src="https://github.com/user-attachments/assets/e484d965-a6ac-46b4-b3bd-6fe4b10cb75b" />
++![Label reconciliation](outputs/figures/03_label_reconciliation.png)
+ 
+ 
+ ### Perception stage and threshold tuning
+@@ -118,13 +118,13 @@ Among review cases, low OCR confidence is the most common blocking reason (76.6%
+ 
+ False positive rates differ by model only at the margin of significance (chi square p value 0.055, Cramer V 0.022). The threshold sweep shows the automation and workload trade off: at a detection threshold of 0.70, lowering the OCR gate from 0.80 to 0.60 lifts automation from 5.7% to 11.1% of candidates while the false positive share of accepted cases stays between 2% and 3.5%, close to the 3.8% base rate, confirming that the confidence scores are not buying precision.
+ 
+-<img width="1259" height="658" alt="08_threshold_tradeoff" src="https://github.com/user-attachments/assets/f3f7ab1e-1853-445c-ba22-462df62af31a" />
++![Threshold tradeoff](outputs/figures/08_threshold_tradeoff.png)
+ 
+ 
+-<img width="1184" height="584" alt="10_false_positive_separability" src="https://github.com/user-attachments/assets/4b45da43-8e52-45cf-85cf-f65de80fda03" />
++![False positive separability](outputs/figures/10_false_positive_separability.png)
+ 
+ 
+-<img width="1136" height="584" alt="07_ocr_conditions" src="https://github.com/user-attachments/assets/8c1d9c8b-dda7-4d67-87c5-54bce408466c" />
++![Ocr conditions](outputs/figures/07_ocr_conditions.png)
+ 
+ 
+ ### Benchmark
+@@ -141,18 +141,18 @@ False positive rates differ by model only at the margin of significance (chi squ
+ 
+ The composite ranking is reported for completeness, but the bootstrap intervals on p95 latency overlap for every model and none of the latency drivers tested is significant. On this evidence no model should be retired on performance grounds; the decision should be made on licensing, hardware and maintainability once confidence outputs are calibrated.
+ 
+-<img width="1184" height="659" alt="06_latency_by_model" src="https://github.com/user-attachments/assets/1ddc7da2-182d-4757-967b-f39d64142a2a" />
++![Latency by model](outputs/figures/06_latency_by_model.png)
+ 
+ 
+ ### Corridors and hotspots
+ 
+-<img width="1554" height="810" alt="05_speeding_hotspots" src="https://github.com/user-attachments/assets/f9a4a92b-eaa3-4318-8400-ef0ff2a2a7ef" />
++![Speeding hotspots](outputs/figures/05_speeding_hotspots.png)
+ 
+ 
+-<img width="1334" height="734" alt="04_corridor_fine_value" src="https://github.com/user-attachments/assets/2bfcfcbe-7cea-406e-84a1-27f445e42c8b" />
++![Corridor fine value](outputs/figures/04_corridor_fine_value.png)
+ 
+ 
+-<img width="1485" height="659" alt="09_monthly_trend" src="https://github.com/user-attachments/assets/0a50c57f-bd05-4f0f-a1bf-539ef3efb865" />
++![Monthly trend](outputs/figures/09_monthly_trend.png)
+ 
+ 
+ ### Privacy and retention
+diff --git a/alpr_captures_processed.csv b/data/processed/alpr_captures_processed.csv
+similarity index 100%
+rename from alpr_captures_processed.csv
+rename to data/processed/alpr_captures_processed.csv
+diff --git a/data_quality_log.csv b/data/processed/data_quality_log.csv
+similarity index 100%
+rename from data_quality_log.csv
+rename to data/processed/data_quality_log.csv
+diff --git a/alpr_traffic_raw.xlsx b/data/raw/alpr_traffic_raw.xlsx
+similarity index 100%
+rename from alpr_traffic_raw.xlsx
+rename to data/raw/alpr_traffic_raw.xlsx
+diff --git a/violation_review_dashboard.xlsx b/outputs/dashboard/violation_review_dashboard.xlsx
+similarity index 100%
+rename from violation_review_dashboard.xlsx
+rename to outputs/dashboard/violation_review_dashboard.xlsx
+diff --git a/01_data_integrity_issues.png b/outputs/figures/01_data_integrity_issues.png
+similarity index 100%
+rename from 01_data_integrity_issues.png
+rename to outputs/figures/01_data_integrity_issues.png
+diff --git a/02_decision_mix.png b/outputs/figures/02_decision_mix.png
+similarity index 100%
+rename from 02_decision_mix.png
+rename to outputs/figures/02_decision_mix.png
+diff --git a/03_label_reconciliation.png b/outputs/figures/03_label_reconciliation.png
+similarity index 100%
+rename from 03_label_reconciliation.png
+rename to outputs/figures/03_label_reconciliation.png
+diff --git a/04_corridor_fine_value.png b/outputs/figures/04_corridor_fine_value.png
+similarity index 100%
+rename from 04_corridor_fine_value.png
+rename to outputs/figures/04_corridor_fine_value.png
+diff --git a/05_speeding_hotspots.png b/outputs/figures/05_speeding_hotspots.png
+similarity index 100%
+rename from 05_speeding_hotspots.png
+rename to outputs/figures/05_speeding_hotspots.png
+diff --git a/06_latency_by_model.png b/outputs/figures/06_latency_by_model.png
+similarity index 100%
+rename from 06_latency_by_model.png
+rename to outputs/figures/06_latency_by_model.png
+diff --git a/07_ocr_conditions.png b/outputs/figures/07_ocr_conditions.png
+similarity index 100%
+rename from 07_ocr_conditions.png
+rename to outputs/figures/07_ocr_conditions.png
+diff --git a/08_threshold_tradeoff.png b/outputs/figures/08_threshold_tradeoff.png
+similarity index 100%
+rename from 08_threshold_tradeoff.png
+rename to outputs/figures/08_threshold_tradeoff.png
+diff --git a/09_monthly_trend.png b/outputs/figures/09_monthly_trend.png
+similarity index 100%
+rename from 09_monthly_trend.png
+rename to outputs/figures/09_monthly_trend.png
+diff --git a/10_false_positive_separability.png b/outputs/figures/10_false_positive_separability.png
+similarity index 100%
+rename from 10_false_positive_separability.png
+rename to outputs/figures/10_false_positive_separability.png
+diff --git a/11_model_benchmark.png b/outputs/figures/11_model_benchmark.png
+similarity index 100%
+rename from 11_model_benchmark.png
+rename to outputs/figures/11_model_benchmark.png
+diff --git a/analytics_report.md b/outputs/reports/analytics_report.md
+similarity index 100%
+rename from analytics_report.md
+rename to outputs/reports/analytics_report.md
+diff --git a/benchmark_scorecard.csv b/outputs/reports/benchmark_scorecard.csv
+similarity index 100%
+rename from benchmark_scorecard.csv
+rename to outputs/reports/benchmark_scorecard.csv
+diff --git a/condition_effects.csv b/outputs/reports/condition_effects.csv
+similarity index 100%
+rename from condition_effects.csv
+rename to outputs/reports/condition_effects.csv
+diff --git a/corridor_summary.csv b/outputs/reports/corridor_summary.csv
+similarity index 100%
+rename from corridor_summary.csv
+rename to outputs/reports/corridor_summary.csv
+diff --git a/data_quality_report.md b/outputs/reports/data_quality_report.md
+similarity index 100%
+rename from data_quality_report.md
+rename to outputs/reports/data_quality_report.md
+diff --git a/decision_summary.csv b/outputs/reports/decision_summary.csv
+similarity index 100%
+rename from decision_summary.csv
+rename to outputs/reports/decision_summary.csv
+diff --git a/false_positive_model_comparison.csv b/outputs/reports/false_positive_model_comparison.csv
+similarity index 100%
+rename from false_positive_model_comparison.csv
+rename to outputs/reports/false_positive_model_comparison.csv
+diff --git a/false_positive_separability.csv b/outputs/reports/false_positive_separability.csv
+similarity index 100%
+rename from false_positive_separability.csv
+rename to outputs/reports/false_positive_separability.csv
+diff --git a/label_integrity.csv b/outputs/reports/label_integrity.csv
+similarity index 100%
+rename from label_integrity.csv
+rename to outputs/reports/label_integrity.csv
+diff --git a/latency_drivers.csv b/outputs/reports/latency_drivers.csv
+similarity index 100%
+rename from latency_drivers.csv
+rename to outputs/reports/latency_drivers.csv
+diff --git a/metrics.json b/outputs/reports/metrics.json
+similarity index 100%
+rename from metrics.json
+rename to outputs/reports/metrics.json
+diff --git a/model_scorecard.csv b/outputs/reports/model_scorecard.csv
+similarity index 100%
+rename from model_scorecard.csv
+rename to outputs/reports/model_scorecard.csv
+diff --git a/monthly_trend.csv b/outputs/reports/monthly_trend.csv
+similarity index 100%
+rename from monthly_trend.csv
+rename to outputs/reports/monthly_trend.csv
+diff --git a/ocr_condition_matrix.csv b/outputs/reports/ocr_condition_matrix.csv
+similarity index 100%
+rename from ocr_condition_matrix.csv
+rename to outputs/reports/ocr_condition_matrix.csv
+diff --git a/reconciliation.csv b/outputs/reports/reconciliation.csv
+similarity index 100%
+rename from reconciliation.csv
+rename to outputs/reports/reconciliation.csv
+diff --git a/retention_summary.csv b/outputs/reports/retention_summary.csv
+similarity index 100%
+rename from retention_summary.csv
+rename to outputs/reports/retention_summary.csv
+diff --git a/speeding_hotspot_matrix.csv b/outputs/reports/speeding_hotspot_matrix.csv
+similarity index 100%
+rename from speeding_hotspot_matrix.csv
+rename to outputs/reports/speeding_hotspot_matrix.csv
+diff --git a/threshold_sweep.csv b/outputs/reports/threshold_sweep.csv
+similarity index 100%
+rename from threshold_sweep.csv
+rename to outputs/reports/threshold_sweep.csv
+diff --git a/violation_rate_by_day_of_week.csv b/outputs/reports/violation_rate_by_day_of_week.csv
+similarity index 100%
+rename from violation_rate_by_day_of_week.csv
+rename to outputs/reports/violation_rate_by_day_of_week.csv
+diff --git a/violation_rate_by_district_zone.csv b/outputs/reports/violation_rate_by_district_zone.csv
+similarity index 100%
+rename from violation_rate_by_district_zone.csv
+rename to outputs/reports/violation_rate_by_district_zone.csv
+diff --git a/violation_rate_by_jurisdiction.csv b/outputs/reports/violation_rate_by_jurisdiction.csv
+similarity index 100%
+rename from violation_rate_by_jurisdiction.csv
+rename to outputs/reports/violation_rate_by_jurisdiction.csv
+diff --git a/violation_rate_by_road_type.csv b/outputs/reports/violation_rate_by_road_type.csv
+similarity index 100%
+rename from violation_rate_by_road_type.csv
+rename to outputs/reports/violation_rate_by_road_type.csv
+diff --git a/violation_rate_by_time_of_day.csv b/outputs/reports/violation_rate_by_time_of_day.csv
+similarity index 100%
+rename from violation_rate_by_time_of_day.csv
+rename to outputs/reports/violation_rate_by_time_of_day.csv
+diff --git a/violation_rate_by_vehicle_type.csv b/outputs/reports/violation_rate_by_vehicle_type.csv
+similarity index 100%
+rename from violation_rate_by_vehicle_type.csv
+rename to outputs/reports/violation_rate_by_vehicle_type.csv
+diff --git a/__init__.py b/src/alpr_analytics/__init__.py
+similarity index 100%
+rename from __init__.py
+rename to src/alpr_analytics/__init__.py
+diff --git a/benchmarking.py b/src/alpr_analytics/benchmarking.py
+similarity index 100%
+rename from benchmarking.py
+rename to src/alpr_analytics/benchmarking.py
+diff --git a/cleaning.py b/src/alpr_analytics/cleaning.py
+similarity index 100%
+rename from cleaning.py
+rename to src/alpr_analytics/cleaning.py
+diff --git a/config.py b/src/alpr_analytics/config.py
+similarity index 100%
+rename from config.py
+rename to src/alpr_analytics/config.py
+diff --git a/dashboard.py b/src/alpr_analytics/dashboard.py
+similarity index 100%
+rename from dashboard.py
+rename to src/alpr_analytics/dashboard.py
+diff --git a/enforcement_analysis.py b/src/alpr_analytics/enforcement_analysis.py
+similarity index 100%
+rename from enforcement_analysis.py
+rename to src/alpr_analytics/enforcement_analysis.py
+diff --git a/figures.py b/src/alpr_analytics/figures.py
+similarity index 100%
+rename from figures.py
+rename to src/alpr_analytics/figures.py
+diff --git a/modeling.py b/src/alpr_analytics/modeling.py
+similarity index 100%
+rename from modeling.py
+rename to src/alpr_analytics/modeling.py
+diff --git a/perception_analysis.py b/src/alpr_analytics/perception_analysis.py
+similarity index 100%
+rename from perception_analysis.py
+rename to src/alpr_analytics/perception_analysis.py
+diff --git a/pipeline.py b/src/alpr_analytics/pipeline.py
+similarity index 100%
+rename from pipeline.py
+rename to src/alpr_analytics/pipeline.py
+diff --git a/privacy.py b/src/alpr_analytics/privacy.py
+similarity index 100%
+rename from privacy.py
+rename to src/alpr_analytics/privacy.py
+diff --git a/reporting.py b/src/alpr_analytics/reporting.py
+similarity index 100%
+rename from reporting.py
+rename to src/alpr_analytics/reporting.py
+diff --git a/rules_engine.py b/src/alpr_analytics/rules_engine.py
+similarity index 100%
+rename from rules_engine.py
+rename to src/alpr_analytics/rules_engine.py
+diff --git a/stats_utils.py b/src/alpr_analytics/stats_utils.py
+similarity index 100%
+rename from stats_utils.py
+rename to src/alpr_analytics/stats_utils.py
+diff --git a/vision.py b/src/alpr_analytics/vision.py
+similarity index 100%
+rename from vision.py
+rename to src/alpr_analytics/vision.py
+diff --git a/conftest.py b/tests/conftest.py
+similarity index 100%
+rename from conftest.py
+rename to tests/conftest.py
+diff --git a/test_cleaning.py b/tests/test_cleaning.py
+similarity index 100%
+rename from test_cleaning.py
+rename to tests/test_cleaning.py
+diff --git a/test_hyphen_audit.py b/tests/test_hyphen_audit.py
+similarity index 100%
+rename from test_hyphen_audit.py
+rename to tests/test_hyphen_audit.py
+diff --git a/test_privacy.py b/tests/test_privacy.py
+similarity index 100%
+rename from test_privacy.py
+rename to tests/test_privacy.py
+diff --git a/test_rules.py b/tests/test_rules.py
+similarity index 100%
+rename from test_rules.py
+rename to tests/test_rules.py
+diff --git a/test_vision.py b/tests/test_vision.py
+similarity index 100%
+rename from test_vision.py
+rename to tests/test_vision.py
